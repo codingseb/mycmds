@@ -3,7 +3,7 @@ set /p response=Warning this is going to empty permanently the current directory
 
 if not "%response%" == "y" goto :end
 
-rm -d -r -f %* *
+rm -d -r -f %*
 
 :end
 
