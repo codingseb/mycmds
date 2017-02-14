@@ -24,6 +24,8 @@ class Script
 			Console.WriteLine("\t-h or --help : Show this help for the command");
 			Console.WriteLine("\t-s [jpath]   : Allow to return a sub part of the json");
 			Console.WriteLine("\t               based on jpath (like xpath for json)");
+			Console.WriteLine("\t-c           : If defined count the number of elements in root");
+			Console.WriteLine("");
 			Console.WriteLine("Json can be read as json or filename in the command last arg or from standard input (by pipes).");
 		}
 		else
@@ -71,12 +73,12 @@ class Script
 					jTokens = jToken.SelectTokens(path);
 				}
 			}
-			else
-			{
-				jTokens = jToken.SelectTokens("$");
-			}
 
-			if (dlargs.Contains("-b") || dlargs.Contains("-i"))
+			if(dlargs.Contains("-c"))
+			{
+				Console.Write(jTokens == null ? (jToken.Type == JTokenType.Array ? (jToken as JArray).Count : 1) : jTokens.Count());
+			}
+			else if (dlargs.Contains("-b") || dlargs.Contains("-i"))
 			{
 				Console.Write(JsonConvert.SerializeObject(jTokens == null ? jToken : jTokens, Formatting.Indented).Trim('"'));
 			}
