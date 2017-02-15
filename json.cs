@@ -25,6 +25,7 @@ class Script
 			Console.WriteLine("\t-s [jpath]   : Allow to return a sub part of the json");
 			Console.WriteLine("\t               based on jpath (like xpath for json)");
 			Console.WriteLine("\t-c           : If defined count the number of elements in root");
+			Console.WriteLine("\t               (after sub part process if one)");
 			Console.WriteLine("");
 			Console.WriteLine("Json can be read as json or filename in the command last arg or from standard input (by pipes).");
 		}
